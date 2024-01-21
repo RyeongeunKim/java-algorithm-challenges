@@ -14,6 +14,7 @@ public class StringManipulation {
         return answer;
     }
 
+    // 대소문자 변환
     public static String swapCase(String str) {
         String answer = "";
         for (char x : str.toCharArray()) {
@@ -24,5 +25,19 @@ public class StringManipulation {
             }
         }
         return answer;
+    }
+
+    // 문장 속 단어
+    public static String findLongestWord(String input) {
+        String[] words = input.split(" ");
+        String longestWord = "";
+
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+            }
+        }
+
+        return longestWord;
     }
 }
