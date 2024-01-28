@@ -43,13 +43,35 @@ public class StringManipulation {
         return longestWord;
     }
 
-    // 문자열 뒤집기
-    public static ArrayList<String> reverseStrings(String[] str) {
+    // 문자열 뒤집기(StringBuilder)
+    public static ArrayList<String> reverseWithBuilder(String[] str) {
         ArrayList<String> answer = new ArrayList<>();
 
         for (String x:str) {
             String temp = new StringBuilder(x).reverse().toString();
             answer.add(temp);
+        }
+
+        return answer;
+    }
+
+    // 문자열 뒤집기(직접 뒤집기)
+    public static ArrayList<String> reverseManually(String[] str) {
+        ArrayList<String> answer = new ArrayList<>();
+
+        for (String x:str) {
+            char[] s = x.toCharArray();
+            int lt = 0, rt = s.length - 1;
+
+            while(lt < rt) {
+                char temp = s[lt];
+                s[lt] = s[rt];
+                s[rt] = temp;
+                lt++;
+                rt--;
+            }
+            String tmp = String.valueOf(s);
+            answer.add(tmp);
         }
 
         return answer;

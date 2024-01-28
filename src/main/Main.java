@@ -12,8 +12,17 @@ public class Main {
         ArrayList<String> answer = new ArrayList<>();
 
         for (String x:str) {
-            String temp = new StringBuilder(x).reverse().toString();
-            answer.add(temp);
+            char[] s = x.toCharArray();
+            int lt = 0, rt = s.length-1;
+            while (lt<rt) {
+                char temp = s[lt];
+                s[lt] = s[rt];
+                s[rt] = temp;
+                lt++;
+                rt--;
+            }
+            String tmp = String.valueOf(s);
+            answer.add(tmp);
         }
 
         return answer;
@@ -27,7 +36,7 @@ public class Main {
         for(int i=0; i<n; i++){
             str[i]=kb.next();
         }
-        for (String x: StringManipulation.reverseStrings(str)) {
+        for (String x: StringManipulation.reverseManually(str)) {
             System.out.println(x);
         }
     }
