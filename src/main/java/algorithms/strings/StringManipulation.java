@@ -1,5 +1,7 @@
 package src.main.java.algorithms.strings;
 
+import java.util.ArrayList;
+
 public class StringManipulation {
     // 문자 찾기
     public static int stringManipulationExample(String str, char t) {
@@ -39,5 +41,17 @@ public class StringManipulation {
         }
 
         return longestWord;
+    }
+
+    // 문자열 뒤집기
+    public static ArrayList<String> reverseStrings(String[] str) {
+        ArrayList<String> answer = new ArrayList<>();
+
+        for (String x:str) {
+            String temp = new StringBuilder(x).reverse().toString();
+            answer.add(temp);
+        }
+
+        return answer;
     }
 }

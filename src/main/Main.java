@@ -2,32 +2,19 @@ package  src.main;
 
 import src.main.java.algorithms.strings.StringManipulation;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.SimpleTimeZone;
 
 public class Main {
-    public String solution(String str) {
-        String answer = "";
-        int m = Integer.MIN_VALUE, pos;
+    public ArrayList<String> solution(String[] str) {
+        ArrayList<String> answer = new ArrayList<>();
 
-        while ((pos = str.indexOf(" ")) != -1) {
-            System.out.println(pos);
-            String tmp = str.substring(0, pos);
-            int len = tmp.length();
-            if (len > m) {
-                m = len;
-                answer = tmp;
-            }
-            str = str.substring(pos + 1);
+        for (String x:str) {
+            String temp = new StringBuilder(x).reverse().toString();
+            answer.add(temp);
         }
-        if (str.length() > m) answer = str;
-//        String[] arr = str.split(" ");
-//
-//        for (String s:arr) {
-//            if (s.length() > m) {
-//                m = s.length();
-//                answer = s;
-//            }
-//        }
 
         return answer;
     }
@@ -35,7 +22,13 @@ public class Main {
     public static void main(String[] args) {
         Main T = new Main();
         Scanner kb = new Scanner(System.in);
-        String str = kb.nextLine();
-        System.out.println(T.solution(str));
+        int n = kb.nextInt();
+        String[] str = new String[n];
+        for(int i=0; i<n; i++){
+            str[i]=kb.next();
+        }
+        for (String x: StringManipulation.reverseStrings(str)) {
+            System.out.println(x);
+        }
     }
 }
