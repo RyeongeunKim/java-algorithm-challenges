@@ -8,22 +8,26 @@ import java.util.Scanner;
 import java.util.SimpleTimeZone;
 
 public class Main {
-    public ArrayList<String> solution(String[] str) {
-        ArrayList<String> answer = new ArrayList<>();
+    public String solution(String str) {
+        String answer;
+        char[] chars = str.toCharArray();
+        int lt = 0, rt = chars.length - 1;
 
-        for (String x:str) {
-            char[] s = x.toCharArray();
-            int lt = 0, rt = s.length-1;
-            while (lt<rt) {
-                char temp = s[lt];
-                s[lt] = s[rt];
-                s[rt] = temp;
+        while (lt < rt) {
+            if (!Character.isAlphabetic(chars[lt])) {
                 lt++;
+            } else if (!Character.isAlphabetic(chars[rt])) {
                 rt--;
+            } else {
+              char temp = chars[lt];
+              chars[lt] = chars[rt];
+              chars[rt] = temp;
+              lt++;
+              rt--;
             }
-            String tmp = String.valueOf(s);
-            answer.add(tmp);
         }
+
+        answer = String.valueOf(chars);
 
         return answer;
     }
@@ -31,13 +35,7 @@ public class Main {
     public static void main(String[] args) {
         Main T = new Main();
         Scanner kb = new Scanner(System.in);
-        int n = kb.nextInt();
-        String[] str = new String[n];
-        for(int i=0; i<n; i++){
-            str[i]=kb.next();
-        }
-        for (String x: StringManipulation.reverseManually(str)) {
-            System.out.println(x);
-        }
+        String str = kb.nextLine();
+        System.out.println(StringManipulation.reverseAlphabeticChars(str));
     }
 }
