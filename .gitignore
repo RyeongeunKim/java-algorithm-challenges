@@ -10,6 +10,7 @@
 
 # IntelliJ IDEA project files
 .idea/
+*.iml
 
 # Compiled output
 out/
