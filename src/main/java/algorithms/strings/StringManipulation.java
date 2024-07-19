@@ -1,6 +1,7 @@
 package src.main.java.algorithms.strings;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 public class StringManipulation {
     // 문자 찾기
@@ -99,8 +100,8 @@ public class StringManipulation {
         return String.valueOf(chars);
     }
 
-    // 중복문자제거
-    public static String removeDuplicates(String str) {
+    // [중복문자제거] indexOf: O(n^2)
+    public static String removeDuplicatesUsingIndexOf(String str) {
         String answer = "";
         for (int i = 0; i < str.length(); i++) {
 //            System.out.println(str.charAt(i) + " " + i + " " + str.indexOf(str.charAt(i)));
@@ -109,5 +110,22 @@ public class StringManipulation {
             }
         }
         return answer;
+    }
+
+    // [중복문자제거] LinkedHashSet: O(n)
+    public static String removeDuplicatesUsingSet(String str) {
+        // LinkedHashSet을 사용하여 중복을 제거하고 순서 유지
+        LinkedHashSet<Character> chars = new LinkedHashSet<>();
+        for (char c : str.toCharArray()) {
+            chars.add(c);
+        }
+
+        // StringBuilder를 사용하여 반환할 문자열 생성
+        StringBuilder answer = new StringBuilder();
+        for (char c : chars) {
+            answer.append(c);
+        }
+
+        return answer.toString();
     }
 }
